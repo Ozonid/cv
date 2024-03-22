@@ -1,36 +1,195 @@
-import { Card, CardBody, Flex, Heading, Icon, Link, Stack, Text } from '@chakra-ui/react';
-import { RiChatVoiceFill, RiCodeBoxFill, RiGithubFill, RiLinkedinBoxFill, RiMailFill } from 'react-icons/ri';
+import {
+    Card,
+    CardBody,
+    CardHeader,
+    Flex,
+    Heading,
+    Icon,
+    Link,
+    ListItem,
+    Stack,
+    StackDivider,
+    Text,
+    UnorderedList,
+} from '@chakra-ui/react';
+import {
+    RiBriefcase4Fill,
+    RiChatVoiceFill,
+    RiCodeBoxFill,
+    RiFlashlightFill,
+    RiGithubFill,
+    RiLinkedinBoxFill,
+    RiMailFill,
+    RiSurveyFill,
+} from 'react-icons/ri';
+
+interface Experience {
+    company: string;
+    title: string;
+    from: string;
+    to: string;
+    description: string[];
+    projects?: Project[];
+    technologies?: string[];
+}
+
+interface Project {
+    description: string;
+    technologies: string[];
+}
+
+const experience: Experience[] = [
+    {
+        company: 'NDVR',
+        title: 'Senior Frontend Engineer',
+        from: '02.2022',
+        to: '03.2024',
+        description: [
+            'NDVR provides high net worth wealth management tools and advice for families looking to optimize their wealth.',
+
+            `First I was a member of the general frontend team responsible for the client facing UI and a back-office tool for user and household management.
+            My main projects were creating an onboarding wizard to ease data collection process for customers, improving the general quality of the website codebase
+            and taking over, fully refactoring and extending the features of the advisory tool.`,
+
+            `For the last 9 months I joined the portfolio management team responsible for the underlying trading and reporting infrastructure that was lacking any kind of UI at the time.
+            My responsibility was to work closely with the quant engineers to build up a highly customizable, all-in-one application for our portfolio managers,
+            to allow easy access to our existing reporting and historical data via multiple complex listing pages and a custom widget system (for securities, portfolios, trades, pricing, positions etc.)
+            and make scaling our trading operations a possibility with various tools (optimizer, trade blotter, bond calculator).`,
+        ],
+        technologies: [
+            'React',
+            'TypeScript',
+            'Redux',
+            'Chakra UI',
+            'OpenAPI',
+            'Python',
+            'FastAPI',
+            'AWS',
+            'Kubernetes',
+            'Apache Airflow',
+            'Redshift',
+        ],
+    },
+    {
+        company: 'greehill',
+        title: 'Full Stack Developer',
+        from: '06.2021',
+        to: '11.2021',
+        description: [
+            'greehill is a digital greenery management and city planning tool.',
+            `After finishing its pilot project with Singapore, the company decided to focus its attention on developing its own product.
+            As one of the two full stack engineers working on the project my main focus was to plan and implement a demo UI with as much “wow factor”
+            as possible while also hitting really strict deadlines. During development we had to tackle some peculiar problems like managing different map projections, 2D map handling with lots of data points and 3D rendering.`,
+        ],
+        technologies: ['React', 'Mapbox', 'Three.js', 'CSS modules', 'Node.js', 'Fastify', 'PostgreSQL', 'PostGIS'],
+    },
+    {
+        company: 'Bitrise',
+        title: 'Frontend Developer',
+        from: '04.2020',
+        to: '06.2021',
+        description: [
+            'Bitrise is a mobile-first CI/CD platform.',
+            `As the company just started migrating the old Angular codebase to React when I joined, I took part in defining a migration path and also owned this project at some point.
+            As a member of one of the product teams I spent most of my time working on the new and legacy frontend codebase and on the monolithic Ruby application.
+            I also took part in organizing internal React workshops and “standard setting” meetings.`,
+        ],
+        technologies: ['React', 'TypeScript', 'Angular 6+', 'Angular.js', 'HTML/CSS', 'Ruby+Rails', 'Heroku'],
+    },
+    {
+        company: 'RisingStack',
+        title: 'Full-Stack Developer',
+        from: '05.2019',
+        to: '04.2020',
+        description: ['RisingStack is a Node.js Consulting & Development company.'],
+        projects: [
+            {
+                description:
+                    'Message Broadcast provides cross channel interactions with customers by allowing businesses to send high volumes of email, sms and voice messages. Our job was to rewrite their existing infrastructure using modern frameworks and techniques.',
+                technologies: ['React+MobX', 'HTML/SCSS', 'Node.js', 'Express', 'MongoDB', 'MySQL', 'Redis'],
+            },
+        ],
+    },
+    {
+        company: 'Sonrisa Technologies',
+        title: 'Frontend Developer',
+        from: '08.2017',
+        to: '05.2019',
+        description: ['Sonrisa is a software development agency.'],
+        projects: [
+            {
+                description:
+                    'Jumio is one of the leading identity verification providers. I was supporting the migration of their "netwerify web" application and its back-office admin tool to Angular 4+.',
+                technologies: ['Angular 4+', 'HTML/SCSS'],
+            },
+        ],
+    },
+    {
+        company: 'RisingStack',
+        title: 'Full-Stack Developer',
+        from: '02.2015',
+        to: '08.2017',
+        description: ['RisingStack is a Node.js Consulting & Development company.'],
+        projects: [
+            {
+                description:
+                    'SureFire is a mortgage CRM application from an Atlanta-based company called TopOfMind. Apart from refactoring and implementing missing functionalities, my main task was to improve the user experience with handling large forms and tables.',
+                technologies: ['Angular.js', 'HTML/SCSS'],
+            },
+            {
+                description: `Trace by RisingStack was a SaaS monitoring solution that specialized on Node.js and Microservices Monitoring.
+                I was responsible for displaying the various metrics in a user-friendly way while making the customization of various features intuitive`,
+                technologies: ['Angular.js', 'React', 'HTML/LESS', 'Koa', 'Redis', 'PostgreSQL', 'Kubernetes'],
+            },
+            {
+                description: `Concaria was a demo/simulator application for LogMeIn's IoT cloud platform called Xively.
+                The project scope was to overhaul the existing codebase and to add new features to handle real-time events coming from the simulator backend.`,
+                technologies: ['Angular.js', 'HTML/LESS', 'Express', 'Socket.io'],
+            },
+            {
+                description:
+                    'Emarsys is one of the biggest marketing platforms used by many companies around the world. I worked on a DNS/domain configurator and an email template creator tool.',
+                technologies: ['Angular.js', 'HTML/CSS', 'Koa'],
+            },
+            {
+                description: `Farmhedge is an app for Irish farmers funded by the University of Limerick focused on simplifying the purchase and distribution of farming goods.
+                The project included developing an admin site, a suitable backend and a hybrid mobile app that could be deployed to both android and iOS devices.`,
+                technologies: ['Ionic', 'Angular.js', 'HTML/CSS', 'Express', 'MongoDB'],
+            },
+        ],
+    },
+];
 
 export const App = () => {
     return (
         <Stack width="80%" marginX="auto" maxWidth="1000px" py={6} gap={6}>
             <Flex justifyContent="space-between">
                 <Stack gap={0}>
-                    <Heading textTransform="uppercase">Kiss Dávid</Heading>
-                    <Flex alignItems="center" gap={1} color="gray.700">
+                    <Heading textTransform="uppercase">Dávid Kiss</Heading>
+                    <Flex alignItems="center" gap={1} color="gray.400" fontSize="small">
                         <Icon as={RiCodeBoxFill} />
                         <Text>Frontend Developer | Full-Stack (Node.js, React)</Text>
                     </Flex>
-                    <Flex alignItems="center" gap={1} color="gray.700">
+                    <Flex alignItems="center" gap={1} color="gray.400" fontSize="small">
                         <Icon as={RiChatVoiceFill} />
                         <Text>Fluent in English and Hungarian</Text>
                     </Flex>
                 </Stack>
 
-                <Stack gap={0} justifyContent="space-between">
-                    <Flex alignItems="center" gap={1} color="gray.700">
+                <Stack gap={0} justifyContent="space-around" fontSize="small">
+                    <Flex alignItems="center" gap={1} color="gray.400">
                         <Icon as={RiLinkedinBoxFill} />
                         <Link target="_blank" href="https://www.linkedin.com/in/david-k-858702a2/">
                             linkedin.com/in/david-k-858702a2/
                         </Link>
                     </Flex>
-                    <Flex alignItems="center" gap={1} color="gray.700">
+                    <Flex alignItems="center" gap={1} color="gray.400">
                         <Icon as={RiGithubFill} />
                         <Link target="_blank" href="https://github.com/Ozonid">
                             github.com/Ozonid
                         </Link>
                     </Flex>
-                    <Flex alignItems="center" gap={1} color="gray.700">
+                    <Flex alignItems="center" gap={1} color="gray.400">
                         <Icon as={RiMailFill} />
                         <Text>kissd1990@gmail.com</Text>
                     </Flex>
@@ -38,7 +197,7 @@ export const App = () => {
             </Flex>
 
             <Card>
-                <CardBody background="gray.100">
+                <CardBody>
                     <Text>
                         After spending 5 years at agencies I decided to move onto product development. With a strong
                         affinity towards the frontend, I take pride in delivering high quality solutions without
@@ -49,50 +208,77 @@ export const App = () => {
                     </Text>
                 </CardBody>
             </Card>
+
+            <Stack>
+                <Flex alignItems="center" gap={1}>
+                    <Icon as={RiBriefcase4Fill} />
+                    <Text fontSize="large" fontWeight="medium">
+                        Experience
+                    </Text>
+                </Flex>
+
+                {experience.map((data, idx) => (
+                    <Experience key={idx} data={data} />
+                ))}
+            </Stack>
         </Stack>
     );
 };
 
-// KEY PROJECTS
-// Zinema was basically an IMDB for Bollywood with built-in movie listings and cinema finders for India. The scope of the project was creating an admin site for managing various resources and a backend to support that. We also had to crawl various sites and databases for movies and listing from provided sites.
-// Angular.js, HTML, CSS, Express, MySQL
-// Second Screen was a companion app for major TV channels’ morning and talk shows. Viewers were presented with real-time polls and additional information via the app. We were responsible for developing an admin site to manage the content sent during these shows with an interactive UI. We also created the backend for it and we had to make sure it can handle the load under multiple ongoing live votes.
-// Angular.js, HTML, CSS, Express, MySQL, Redis
-// Farmhedge is an app for Irish farmers funded by the University of Limerick. The registered agricultural providers were able to create deals that would show up in the app and farmers could organize batch orders. This way they were able to save money on fertilizers, feeds, medicine etc. and made the demand more manageable and predictable for providers. The app would also provide useful hints and tips for farmers based on present and historical weather conditions. The project was an end-to-end solution, it included developing an admin site, a suitable backend and a hybrid mobile app that could be deployed to both android and iOS devices.
-// Ionic, Angular.js, HTML, CSS, Express, MongoDB
-// Emarsys is one of the biggest marketing platforms used by many companies around the world. We helped them on multiple occasions develop new features or improve existing ones. I took part in two of those projects.
-// The first one was about giving clients an automated guide setting up their DNS configuration for email sending that took weeks before introducing the tool.
-// The other one was the email template selector that cut the onboarding process of new customers by a sizable amount by providing the possibility to select and customize a starter template for their email campaigns. I was working on the frontend application in both cases.
-// Angular.js, HTML, CSS, Koa
-// Concaria was a demo application for LogMeIn’s IoT cloud platform called Xively (acquired by Google later). The app was a simulation showing how controlling and maintaining smart devices (eg. industrial air purifier, smart jacket) connected to the platform would work. The project scope was to improve the existing codebase (we ended up with a complete overhaul) and adding new features to handle real-time events coming from the simulator backend.
-// Angular.js, HTML, LESS, Express, Socket.io
-// Trace by RisingStack was a SaaS monitoring solution that specialized on Node.js and Microservices Monitoring. It was entirely planned and developed within RisingStack from early 2015 to late 2017, until it was acquired by Keymetrics. My main responsibility was developing the UI to ensure that data arriving from multiple microservices were displayed in the most useful and understandable way while showing multiple parameters of the system and making customization of different features intuitive.
-// Angular.js, React, HTML, LESS, Koa, Redis, PostgreSQL, Kubernetes
-// SureFire is a mortgage CRM application from an Atlanta-based company called TopOfMind. Apart from refactoring and implementing missing functionalities, my main task was to improve the user experience with handling large forms and tables.
-// Angular.js, HTML, CSS
-// Jumio is one of the leading identity verification providers.
-// My first project was to create the UI part of the latest version of their web application netwerify web 4.0, making it compatible with most browsers while maintaining responsiveness of the site.
-// The second assignment was to reimplement their obsolete admin site in a modern framework. The admin had both back office functionality and client facing parts so it was quite a challenge to provide a streamlined UI solution while maintaining support for the various use cases of different permission levels.
-// Angular 4+, HTML, SCSS
-// Message Broadcast provides cross channel interactions with customers by allowing businesses to send high volumes of email, sms and voice messages. Our job was to rewrite their existing infrastructure using modern frameworks and techniques. The project included creating multiple microservices with various underlying databases, worker processes and an admin interface.
-// React+MobX, HTML, SCSS, Express, MongoDB, MySQL, Redis
-// Bitrise is a mobile-first CI/CD platform.
-// As the company just started migrating the old Angular codebase to React when I joined, I took part in defining a migration path and also owned this project at some point. As a member of one of the product teams I spent most of my time working on the new and legacy frontend codebase and on the monolithic Ruby application. I also took part in organizing internal React workshops and “standard setting” meetings.
-// React, Typescript, Angular 6+, Angular.js, HTML, CSS, Ruby+Rails
-// greehill is a work in progress greenery management and city planning tool
-// After finishing its pilot project with Singapore, the company decided to focus its attention on developing its own product. As one of the two full stack engineers working on the project my main focus was to plan and implement a demo UI with as much “wow factor” as possible while also hitting really strict deadlines. During development we had to tackle some peculiar problems like managing different map projections, 2D map handling with lots of data points and 3D rendering.
-// React, Mapbox, Three.js, CSS modules, Fastify, Potgres, PostGIS
+const Experience = ({ data }: { data: Experience }) => {
+    return (
+        <Card>
+            <CardHeader pb={0}>
+                <Stack gap={0}>
+                    <Text lineHeight={1} fontWeight="bold">
+                        {data.company} - {data.title}
+                    </Text>
+                    <Text fontSize="small" color="gray.400">
+                        {data.from} - {data.to}
+                    </Text>
+                </Stack>
+            </CardHeader>
 
-// EDUCATION
+            <CardBody>
+                <Stack gap={6}>
+                    <Stack divider={<StackDivider />}>
+                        {data.description.map((chunk, idx) => (
+                            <Text key={idx}>{chunk}</Text>
+                        ))}
+                    </Stack>
 
-// 2009-14 Budapest University of Technology and Economics,
-//                 Chemical Engineering - Polymer Technology BSc (terminated)
+                    {data.projects && (
+                        <Stack gap={0}>
+                            <Flex align="center" gap={1}>
+                                <Icon as={RiSurveyFill} />
+                                <Text>Projects</Text>
+                            </Flex>
+                            <UnorderedList pl={6} fontSize="small">
+                                {data.projects.map(({ description, technologies }, idx) => (
+                                    <ListItem key={idx} mb={2}>
+                                        <Stack gap={0}>
+                                            <Text>{description}</Text>
+                                            <Text fontWeight="bold">{technologies.join(', ')}</Text>
+                                        </Stack>
+                                    </ListItem>
+                                ))}
+                            </UnorderedList>
+                        </Stack>
+                    )}
 
-// EMPLOYMENT HISTORY
-
-// 2022-             Senior Software Developer at NDVR
-// 2021 - 2021  Full Stack Developer at greehill
-// 2020 - 2021  Frontend Developer at Bitrise
-// 2019 - 2020  Full Stack Developer at RisingStack
-// 2017 - 2019  Frontend Developer at Sonrisa International Inc.
-// 2015 - 2017  Full Stack Developer at RisingStack
+                    {data.technologies && (
+                        <Stack gap={0}>
+                            <Flex align="center" gap={1}>
+                                <Icon as={RiFlashlightFill} />
+                                <Text>Key technologies</Text>
+                            </Flex>
+                            <Text fontSize="small" fontWeight="bold">
+                                {data.technologies.join(', ')}
+                            </Text>
+                        </Stack>
+                    )}
+                </Stack>
+            </CardBody>
+        </Card>
+    );
+};
