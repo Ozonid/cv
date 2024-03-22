@@ -25,6 +25,7 @@ import {
 
 interface Experience {
     company: string;
+    url: string;
     title: string;
     from: string;
     to: string;
@@ -41,6 +42,7 @@ interface Project {
 const experience: Experience[] = [
     {
         company: 'NDVR',
+        url: 'https://ndvr.com/',
         title: 'Senior Frontend Engineer',
         from: '02.2022',
         to: '03.2024',
@@ -72,6 +74,7 @@ const experience: Experience[] = [
     },
     {
         company: 'greehill',
+        url: 'https://www.greehill.com/',
         title: 'Full Stack Developer',
         from: '06.2021',
         to: '11.2021',
@@ -85,6 +88,7 @@ const experience: Experience[] = [
     },
     {
         company: 'Bitrise',
+        url: 'https://bitrise.io/',
         title: 'Frontend Developer',
         from: '04.2020',
         to: '06.2021',
@@ -98,6 +102,7 @@ const experience: Experience[] = [
     },
     {
         company: 'RisingStack',
+        url: 'https://risingstack.com/',
         title: 'Full-Stack Developer',
         from: '05.2019',
         to: '04.2020',
@@ -112,11 +117,17 @@ const experience: Experience[] = [
     },
     {
         company: 'Sonrisa Technologies',
+        url: 'https://www.sonrisa.hu/',
         title: 'Frontend Developer',
         from: '08.2017',
         to: '05.2019',
         description: ['Sonrisa is a software development agency.'],
         projects: [
+            {
+                description: `"Consultant Tool" was a dedicated site for MLM company members to help them with sales opportunity suggestions. I was part of the
+                    engineering team tasked to design the system and the product itself and helped to build the frontend of the prototype.`,
+                technologies: ['Angular 4+', 'HTML/SCSS'],
+            },
             {
                 description:
                     'Jumio is one of the leading identity verification providers. I was supporting the migration of their "netwerify web" application and its back-office admin tool to Angular 4+.',
@@ -126,6 +137,7 @@ const experience: Experience[] = [
     },
     {
         company: 'RisingStack',
+        url: 'https://risingstack.com/',
         title: 'Full-Stack Developer',
         from: '02.2015',
         to: '08.2017',
@@ -240,9 +252,17 @@ const Experience = ({ data }: { data: Experience }) => {
         <Card>
             <CardHeader pb={0}>
                 <Stack gap={0}>
-                    <Text lineHeight={1} fontWeight="bold">
+                    <Link
+                        href={data.url}
+                        lineHeight={1}
+                        fontWeight="bold"
+                        color="teal.200"
+                        target="_blank"
+                        textDecor="underline"
+                        width="fit-content"
+                    >
                         {data.company} - {data.title}
-                    </Text>
+                    </Link>
                     <Text fontSize="small" color="gray.400">
                         {data.from} - {data.to}
                     </Text>
@@ -261,7 +281,7 @@ const Experience = ({ data }: { data: Experience }) => {
                         <Stack gap={0}>
                             <Flex align="center" gap={1}>
                                 <Icon as={RiSurveyFill} />
-                                <Text>Projects</Text>
+                                <Text textDecor="underline">Projects</Text>
                             </Flex>
                             <UnorderedList pl={6} fontSize="small">
                                 {data.projects.map(({ description, technologies }, idx) => (
@@ -280,7 +300,7 @@ const Experience = ({ data }: { data: Experience }) => {
                         <Stack gap={0}>
                             <Flex align="center" gap={1}>
                                 <Icon as={RiFlashlightFill} />
-                                <Text>Key technologies</Text>
+                                <Text textDecor="underline">Key technologies</Text>
                             </Flex>
                             <Text fontSize="small" fontWeight="bold">
                                 {data.technologies.join(', ')}
