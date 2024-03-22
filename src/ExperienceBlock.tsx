@@ -45,6 +45,7 @@ export const ExperienceBlock = ({ data }: { data: Experience }) => {
                             </Box>
 
                             <Button
+                                as="span"
                                 size="xs"
                                 colorScheme=""
                                 variant="outline"
