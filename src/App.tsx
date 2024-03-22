@@ -17,30 +17,30 @@ export const App = () => {
             <Flex justifyContent="space-between">
                 <Stack gap={0}>
                     <Heading textTransform="uppercase">Dávid Kiss</Heading>
-                    <Flex alignItems="center" gap={1} color="gray.400" fontSize="small">
+                    <Flex alignItems="center" gap={1} fontSize="small">
                         <Icon as={RiCodeBoxFill} />
                         <Text>Frontend Developer | Full-Stack (Node.js, React)</Text>
                     </Flex>
-                    <Flex alignItems="center" gap={1} color="gray.400" fontSize="small">
+                    <Flex alignItems="center" gap={1} fontSize="small">
                         <Icon as={RiChatVoiceFill} />
                         <Text>Fluent in English and Hungarian</Text>
                     </Flex>
                 </Stack>
 
                 <Stack gap={0} justifyContent="space-around" fontSize="small">
-                    <Flex alignItems="center" gap={1} color="gray.400">
+                    <Flex alignItems="center" gap={1}>
                         <Icon as={RiLinkedinBoxFill} />
                         <Link target="_blank" href="https://www.linkedin.com/in/david-k-858702a2/">
                             linkedin.com/in/david-k-858702a2/
                         </Link>
                     </Flex>
-                    <Flex alignItems="center" gap={1} color="gray.400">
+                    <Flex alignItems="center" gap={1}>
                         <Icon as={RiGithubFill} />
                         <Link target="_blank" href="https://github.com/Ozonid">
                             github.com/Ozonid
                         </Link>
                     </Flex>
-                    <Flex alignItems="center" gap={1} color="gray.400">
+                    <Flex alignItems="center" gap={1}>
                         <Icon as={RiMailFill} />
                         <Text>kissd1990@gmail.com</Text>
                     </Flex>

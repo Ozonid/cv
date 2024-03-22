@@ -1,34 +1,33 @@
 import {
+    Accordion,
+    AccordionButton,
+    AccordionIcon,
+    AccordionItem,
+    AccordionPanel,
+    Box,
+    Button,
     Card,
     CardBody,
+    CardFooter,
     CardHeader,
     Flex,
     Icon,
     Link,
     ListItem,
     Stack,
-    StackDivider,
     Text,
     UnorderedList,
 } from '@chakra-ui/react';
-import { RiFlashlightFill, RiSurveyFill } from 'react-icons/ri';
+import { RiFlashlightFill } from 'react-icons/ri';
 
 import { Experience } from './experience';
 
 export const ExperienceBlock = ({ data }: { data: Experience }) => {
     return (
         <Card>
-            <CardHeader pb={0}>
+            <CardHeader py={3} background="whiteAlpha.50">
                 <Stack gap={0}>
-                    <Link
-                        href={data.url}
-                        lineHeight={1}
-                        fontWeight="bold"
-                        color="teal.200"
-                        target="_blank"
-                        textDecor="underline"
-                        width="fit-content"
-                    >
+                    <Link href={data.url} fontWeight="bold" color="teal.200" target="_blank" width="fit-content">
                         {data.company} - {data.title}
                     </Link>
                     <Text fontSize="small" color="gray.400">
@@ -38,45 +37,52 @@ export const ExperienceBlock = ({ data }: { data: Experience }) => {
             </CardHeader>
 
             <CardBody>
-                <Stack gap={6}>
-                    <Stack divider={<StackDivider />}>
-                        {data.description.map((chunk, idx) => (
-                            <Text key={idx}>{chunk}</Text>
-                        ))}
-                    </Stack>
+                <Accordion allowToggle>
+                    <AccordionItem border={0}>
+                        <AccordionButton p={0}>
+                            <Box as="span" flex="1" textAlign="left">
+                                {data.description}
+                            </Box>
 
-                    {data.projects && (
-                        <Stack gap={0}>
-                            <Flex align="center" gap={1}>
-                                <Icon as={RiSurveyFill} />
-                                <Text textDecor="underline">Projects</Text>
-                            </Flex>
-                            <UnorderedList pl={6} fontSize="small">
-                                {data.projects.map(({ description, technologies }, idx) => (
-                                    <ListItem key={idx} mb={2}>
-                                        <Stack gap={0}>
-                                            <Text>{description}</Text>
-                                            <Text fontWeight="bold">{technologies.join(', ')}</Text>
-                                        </Stack>
-                                    </ListItem>
-                                ))}
-                            </UnorderedList>
-                        </Stack>
-                    )}
+                            <Button
+                                size="xs"
+                                colorScheme=""
+                                variant="outline"
+                                fontWeight="regular"
+                                rightIcon={<AccordionIcon />}
+                            >
+                                projects
+                            </Button>
+                        </AccordionButton>
 
-                    {data.technologies && (
-                        <Stack gap={0}>
-                            <Flex align="center" gap={1}>
-                                <Icon as={RiFlashlightFill} />
-                                <Text textDecor="underline">Key technologies</Text>
-                            </Flex>
-                            <Text fontSize="small" fontWeight="bold">
-                                {data.technologies.join(', ')}
-                            </Text>
-                        </Stack>
-                    )}
-                </Stack>
+                        <AccordionPanel p={0} pt={4}>
+                            <Stack gap={0}>
+                                <UnorderedList pl={4} fontSize="small">
+                                    {data.projects.map((project, idx) => (
+                                        <ListItem key={idx} mb={2}>
+                                            <Text>{project}</Text>
+                                        </ListItem>
+                                    ))}
+                                </UnorderedList>
+                            </Stack>
+                        </AccordionPanel>
+                    </AccordionItem>
+                </Accordion>
             </CardBody>
+
+            {
+                <CardFooter background="whiteAlpha.50">
+                    <Stack gap={0}>
+                        <Flex align="center" gap={1}>
+                            <Icon as={RiFlashlightFill} />
+                            <Text textDecor="underline">Key technologies</Text>
+                        </Flex>
+                        <Text fontSize="small" fontWeight="bold">
+                            {data.technologies.join(', ')}
+                        </Text>
+                    </Stack>
+                </CardFooter>
+            }
         </Card>
     );
 };
