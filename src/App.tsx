@@ -156,6 +156,16 @@ const experience: Experience[] = [
                 The project included developing an admin site, a suitable backend and a hybrid mobile app that could be deployed to both android and iOS devices.`,
                 technologies: ['Ionic', 'Angular.js', 'HTML/CSS', 'Express', 'MongoDB'],
             },
+            {
+                description: `Second Screen was a companion app for TV channels' morning shows to show live polls and additional information about the ongoing topics.
+                My responsibility was putting together an admin site to manage and schedule the appearing content and results.`,
+                technologies: ['Ionic', 'Angular.js', 'HTML/CSS', 'Express', 'MongoDB'],
+            },
+            {
+                description: `Zinema was an IMDB equivalent for Bollywood movies. We created a backend capable of scraping data from different sources
+                and an admin site to manage movie data and theater listings.`,
+                technologies: ['Ionic', 'Angular.js', 'HTML/CSS', 'Express', 'MongoDB'],
+            },
         ],
     },
 ];
