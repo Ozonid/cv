@@ -59,7 +59,7 @@ const experience: Experience[] = [
         technologies: [
             'React',
             'TypeScript',
-            'Redux',
+            'TanStack',
             'Chakra UI',
             'OpenAPI',
             'Python',
