@@ -19,11 +19,11 @@ export const experience: Experience[] = [
         description:
             'NDVR provides high net worth wealth management tools and advice for families looking to optimize their wealth.',
         projects: [
-            `First I was a member of the general frontend team responsible for the client facing UI and a back-office tool for user and household management.
+            `As a member of the general frontend team responsible for the client facing UI and a back-office tool for user and household management.
         My main projects were creating an onboarding wizard to ease data collection process for customers, improving the general quality of the website codebase
         and taking over, fully refactoring and extending the features of the advisory tool.`,
 
-            `For the last 9 months I joined the portfolio management team responsible for the underlying trading and reporting infrastructure that was lacking any kind of UI at the time.
+            `In the portfolio management team I was responsible for the creation of a brand new UI for the underlying trading and reporting infrastructure.
         My responsibility was to work closely with the quant engineers to build up a highly customizable, all-in-one application for our portfolio managers,
         to allow easy access to our existing reporting and historical data via multiple complex listing pages and a custom widget system (for securities, portfolios, trades, pricing, positions etc.)
         and make scaling our trading operations a possibility with various tools (optimizer, trade blotter, bond calculator).`,
