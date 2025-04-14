@@ -17,11 +17,11 @@ export const App = () => {
             width="80%"
             marginX="auto"
             maxWidth="1000px"
-            py={6}
-            gap={6}
+            py={4}
+            gap={2}
             sx={{
                 '@media print': {
-                    '-webkit-print-color-adjust': 'exact',
+                    py: 0,
                 },
             }}
         >
